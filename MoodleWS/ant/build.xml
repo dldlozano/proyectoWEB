@@ -1,7 +1,7 @@
 <project name="MoodleWS" basedir="../" default="deploy-show">
 
 	<!-- Project settings -->
-	<property name="project.distname" value="SGC" />
+	<property name="project.distname" value="MoodleWS" />
 
 	<!-- Local system paths -->
 	<property file="${basedir}/ant/build.properties" />

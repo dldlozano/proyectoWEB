@@ -4,10 +4,12 @@ package com.epn.moodle.entidades;
 
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -16,6 +18,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "persona", schema = "public")
+@NamedQuery(name = "Persona.findAll",query="SELECT p FROM Persona p")
 public class Persona implements java.io.Serializable {
 
 	private int idPersona;

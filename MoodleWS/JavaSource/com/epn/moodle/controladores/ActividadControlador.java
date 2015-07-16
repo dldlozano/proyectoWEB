@@ -70,7 +70,7 @@ public class ActividadControlador {
 		this.idActividadSeleccionado=idActividadSeleccionado;
 	}
 
-	public boolean isEsActualizaresActualizar (){
+	public boolean isEsActualizar (){
 		return esActualizar;
 	}
 
