@@ -11,6 +11,16 @@
 <h:body>
 	<h:form id="frmPrincipal">
 		<p:panelGrid columns="2" id="pgDatos">
+
+			<p:outputLabel value="Nombre: " for="idNomAct" />
+			<p:inputText id="idNomAct" value="#{actividadControlador.actividad.nombreActividad}" required="true" />
+			
+			<p:outputLabel value="Descripción: " for="idDescripcion" />
+			<p:inputTextarea id="idDescripcion" value="#{actividadControlador.actividad.descripcionActividad}" required="true" />
+			
+			<p:outputLabel value="Calificacion: " for="idCalf" />
+			<p:inputText id="idCalf" value="#{actividadControlador.actividad.calificacionAsignatura}" required="true" />
+			
 			<p:commandButton value="Guardar" title="Guardar" action="#{actividadControlador.insertar}"
 				update=":frmPrincipal:pgDatos :frmPrincipal:dtActividads" rendered="#{!actividadControlador.esActualizar}" />
 			<p:commandButton value="Actualizar" title="Actualizar" action="#{actividadControlador.actualizar}"
@@ -24,7 +34,19 @@
 		</p:panelGrid>
 		<p:dataTable id="dtActividads" value="#{actividadControlador.actividads}" var="actividad"
 			paginator="true" paginatorPosition="top" rows="10">
-			<p:column>
+			<p:column headerText="Nombre" width="15%">
+				#{actividad.nombreActividad}
+			</p:column>
+			
+			<p:column headerText="Descripcion" width="60%">
+				#{actividad.descripcionActividad}
+			</p:column>
+			
+			<p:column headerText="Calificacion" width="15%">
+				#{actividad.calificacionAsignatura}
+			</p:column>
+			
+			<p:column width="10%">
 				<p:commandButton icon="ui-icon-pencil" title="Actualizar"
 					process="@this" update=":frmPrincipal:pgDatos">
 					<f:setPropertyActionListener value="#{actividad}" target="#{actividadControlador.actividad}" />
