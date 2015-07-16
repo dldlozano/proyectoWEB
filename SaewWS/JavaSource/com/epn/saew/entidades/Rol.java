@@ -4,10 +4,12 @@ package com.epn.saew.entidades;
 
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -16,6 +18,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "rol", schema = "public")
+@NamedQuery(name = "Rol.findAll",query="SELECT r FROM Rol r")
 public class Rol implements java.io.Serializable {
 
 	private int idRol;
