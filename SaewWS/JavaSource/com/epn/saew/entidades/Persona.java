@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
@@ -15,6 +16,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "persona", schema = "public")
+@NamedQuery(name = "Persona.findAll",query="SELECT p FROM Persona p")
 public class Persona implements java.io.Serializable {
 
 	private int idPersona;
