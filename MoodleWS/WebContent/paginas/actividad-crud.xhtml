@@ -12,9 +12,9 @@
 	<h:form id="frmPrincipal">
 		<p:panelGrid columns="2" id="pgDatos">
 			<p:commandButton value="Guardar" title="Guardar" action="#{actividadControlador.insertar}"
-				update=":frmPrincipal:pgDatos :frmPrincipal:Actividads" rendered="#{!actividadControlador.esActualizar}" />
+				update=":frmPrincipal:pgDatos :frmPrincipal:dtActividads" rendered="#{!actividadControlador.esActualizar}" />
 			<p:commandButton value="Actualizar" title="Actualizar" action="#{actividadControlador.actualizar}"
-				update=":frmPrincipal:pgDatos :frmPrincipal:Actividads" rendered="#{actividadControlador.esActualizar}">
+				update=":frmPrincipal:pgDatos :frmPrincipal:dtActividads" rendered="#{actividadControlador.esActualizar}">
 				<f:setPropertyActionListener value="#{false}" target="#{actividadControlador.esActualizar}" />
 			</p:commandButton>
 			<p:commandButton value="Cancelar" title="Cancelar" action="#{actividadControlador.limpiar}"
