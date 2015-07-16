@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Periodo CRUD</title>
+</h:head>
+<h:body>
+	<h:form id="frmPrincipal">
+		<p:panelGrid columns="2" id="pgDatos">
+			<p:commandButton value="Guardar" title="Guardar" action="#{periodoControlador.insertar}"
+				update=":frmPrincipal:pgDatos :frmPrincipal:Periodos" rendered="#{!periodoControlador.esActualizar}" />
+			<p:commandButton value="Actualizar" title="Actualizar" action="#{periodoControlador.actualizar}"
+				update=":frmPrincipal:pgDatos :frmPrincipal:Periodos" rendered="#{periodoControlador.esActualizar}">
+				<f:setPropertyActionListener value="#{false}" target="#{periodoControlador.esActualizar}" />
+			</p:commandButton>
+			<p:commandButton value="Cancelar" title="Cancelar" action="#{periodoControlador.limpiar}"
+				update=":frmPrincipal:pgDatos" process="@this">
+				<f:setPropertyActionListener value="#{false}" target="#{periodoControlador.esActualizar}" />
+			</p:commandButton>
+		</p:panelGrid>
+		<p:dataTable id="dtPeriodos" value="#{periodoControlador.periodos}" var="periodo"
+			paginator="true" paginatorPosition="top" rows="10">
+			<p:column>
+				<p:commandButton icon="ui-icon-pencil" title="Actualizar"
+					process="@this" update=":frmPrincipal:pgDatos">
+					<f:setPropertyActionListener value="#{periodo}" target="#{periodoControlador.periodo}" />
+					<f:setPropertyActionListener value="#{true}" target="#{periodoControlador.esActualizar}" />
+				</p:commandButton>
+				<p:commandButton action="#{periodoControlador.eliminar}" update=":frmPrincipal:dtPeriodos" icon="ui-icon-close"
+					title="Eliminar" process="@this">
+					<p:confirm header="Confirmacion" message="Esta seguro de eliminar?" icon="ui-icon-alert" />
+					<f:setPropertyActionListener value="#{periodo}" target="#{periodoControlador.periodo}" />
+				</p:commandButton>
+			</p:column>
+		</p:dataTable>
+	</h:form>
+
+	<p:confirmDialog global="true" closable="false">
+		<p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+		<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+	</p:confirmDialog>
+</h:body>
+</html>
