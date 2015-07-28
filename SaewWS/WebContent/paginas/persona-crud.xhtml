@@ -11,6 +11,25 @@
 <h:body>
 	<h:form id="frmPrincipal">
 		<p:panelGrid columns="2" id="pgDatos">
+		
+		<p:outputLabel for="cedula" value="Cédula: " />
+			<p:inputText id="cedula"
+				value="#{personaControlador.persona.cedulaPersona}" required="true" />
+
+			<p:outputLabel for="nombre" value="Nombre: " />
+			<p:inputText id="nombre" required="true"
+				value="#{personaControlador.persona.nombrePersona}" />
+
+			<p:outputLabel for="apellido" value="Apellido" />
+			<p:inputText id="apellido" required="true"
+				value="#{personaControlador.persona.apellidosPersona}" />
+
+			<p:outputLabel for="rol" value="Rol: " />
+			<p:selectOneMenu id="rol" value="#{personaControlador.indexRolSeleccionado}">
+				<f:selectItems value="#{personaControlador.roles}" var="persona"
+					itemLabel="#{persona.nombreRol}" itemValue="#{persona.idRol}" />
+			</p:selectOneMenu>
+		
 			<p:commandButton value="Guardar" title="Guardar" action="#{personaControlador.insertar}"
 				update=":frmPrincipal:pgDatos :frmPrincipal:dtPersonas" rendered="#{!personaControlador.esActualizar}" />
 			<p:commandButton value="Actualizar" title="Actualizar" action="#{personaControlador.actualizar}"
