@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Mis Cursos</title>
+</h:head>
+<h:body>
+	<h:form id="frmPrincipal">
+		<p:dataTable value="#{misCursosCtrl.periodos}" var="periodo">
+			<f:facet name="header">Periodos</f:facet>
+			<p:column headerText="Periodo">
+				#{periodo.nombrePeriodo}
+			</p:column>
+			<p:column>
+				<p:commandButton icon="ui-icon-check" update="@form"
+					action="#{misCursosCtrl.seleccionarPeriodo}">
+					<f:setPropertyActionListener value="#{periodo.idPeriodo}"
+						target="#{misCursosCtrl.idPeriodoSeleccionado}" />
+				</p:commandButton>
+			</p:column>
+		</p:dataTable>
+
+		<p:dataTable value="#{misCursosCtrl.asignaturas}" var="asignatura">
+			<f:facet name="header">Materias</f:facet>
+			<p:column>
+				#{asignatura.nombreAsignatura}
+			</p:column>
+			<p:column>
+				<p:commandButton value="Ver alumnos" update="@form"
+					action="#{misCursosCtrl.seleccionarEstudiante}">
+				</p:commandButton>
+				<p:commandButton value="Crear Curso Moodle" action="#{misCursosCtrl.matricularEstudiantesMoodle}">
+				</p:commandButton>
+			</p:column>
+		</p:dataTable>
+
+		<p:dataTable value="#{misCursosCtrl.estudiantes}" var="est">
+			<f:facet name="header">Estudiantes</f:facet>
+			<p:column>
+				#{est.nombrePersona}
+			</p:column>
+			<p:column>
+				#{est.apellidosPersona}
+			</p:column>
+		</p:dataTable>
+
+	</h:form>
+</h:body>
+</html>

@@ -25,9 +25,7 @@ public class Asignatura implements Serializable {
 	@Column(name="numero_creditos_asignatura")
 	private Integer numeroCreditosAsignatura;
 
-	//bi-directional many-to-one association to Periodo
-	@OneToMany(mappedBy="asignatura")
-	private List<Periodo> periodos;
+	
 
 	public Asignatura() {
 	}
@@ -56,26 +54,5 @@ public class Asignatura implements Serializable {
 		this.numeroCreditosAsignatura = numeroCreditosAsignatura;
 	}
 
-	public List<Periodo> getPeriodos() {
-		return this.periodos;
-	}
-
-	public void setPeriodos(List<Periodo> periodos) {
-		this.periodos = periodos;
-	}
-
-	public Periodo addPeriodo(Periodo periodo) {
-		getPeriodos().add(periodo);
-		periodo.setAsignatura(this);
-
-		return periodo;
-	}
-
-	public Periodo removePeriodo(Periodo periodo) {
-		getPeriodos().remove(periodo);
-		periodo.setAsignatura(null);
-
-		return periodo;
-	}
 
 }

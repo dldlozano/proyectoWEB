@@ -14,4 +14,8 @@ public class ServicioPeriodo extends ServicioBase<Periodo> {
 	public List<Periodo> buscarTodos() { 
 		 return super.buscarTodos("Periodo.findAll");
 	}
+	
+	public void registrarNotas(){
+		
+	}
 }

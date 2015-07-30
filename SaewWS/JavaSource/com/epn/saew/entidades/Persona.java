@@ -33,9 +33,7 @@ public class Persona implements Serializable {
 	@Column(name="numero_unico")
 	private String numeroUnico;
 
-	//bi-directional many-to-one association to Periodo
-	@OneToMany(mappedBy="persona")
-	private List<Periodo> periodos;
+	
 
 	//bi-directional many-to-one association to Rol
 	@ManyToOne
@@ -93,28 +91,7 @@ public class Persona implements Serializable {
 		this.numeroUnico = numeroUnico;
 	}
 
-	public List<Periodo> getPeriodos() {
-		return this.periodos;
-	}
-
-	public void setPeriodos(List<Periodo> periodos) {
-		this.periodos = periodos;
-	}
-
-	public Periodo addPeriodo(Periodo periodo) {
-		getPeriodos().add(periodo);
-		periodo.setPersona(this);
-
-		return periodo;
-	}
-
-	public Periodo removePeriodo(Periodo periodo) {
-		getPeriodos().remove(periodo);
-		periodo.setPersona(null);
-
-		return periodo;
-	}
-
+	
 	public Rol getRol() {
 		return this.rol;
 	}

@@ -57,6 +57,10 @@ public class PersonaControlador {
 		servPersona.eliminar(persona);
 		init();
 	}
+	
+	public void limpiar(){
+		persona = new Persona();
+	}
 
 	// getters y setters
 	public Persona getPersona() {

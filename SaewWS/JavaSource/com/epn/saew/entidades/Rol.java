@@ -22,9 +22,7 @@ public class Rol implements Serializable {
 	@Column(name="nombre_rol")
 	private String nombreRol;
 
-	//bi-directional many-to-one association to Persona
-	@OneToMany(mappedBy="rol")
-	private List<Persona> personas;
+	
 
 	public Rol() {
 	}
@@ -45,26 +43,7 @@ public class Rol implements Serializable {
 		this.nombreRol = nombreRol;
 	}
 
-	public List<Persona> getPersonas() {
-		return this.personas;
-	}
-
-	public void setPersonas(List<Persona> personas) {
-		this.personas = personas;
-	}
-
-	public Persona addPersona(Persona persona) {
-		getPersonas().add(persona);
-		persona.setRol(this);
-
-		return persona;
-	}
-
-	public Persona removePersona(Persona persona) {
-		getPersonas().remove(persona);
-		persona.setRol(null);
-
-		return persona;
-	}
+	
+	
 
 }
